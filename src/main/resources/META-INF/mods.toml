@@ -1,0 +1,20 @@
+modLoader="javafml"
+loaderVersion="[37,)" 
+license="AGNYA License"
+
+[[mods]] 
+modId="prominent" 
+version="1.2.0" 
+displayName="Prominent" 
+logoFile="icon.png" 
+credits="https://github.com/nvb-uy/Prominent-Forge" 
+authors="ElocinDev" 
+description='''
+Custom content for the Prominence Modpack.
+'''
+[[dependencies.prominent]]
+    modId="forge" 
+    mandatory=true 
+    versionRange="[37,)" 
+    ordering="NONE"
+    side="BOTH"
