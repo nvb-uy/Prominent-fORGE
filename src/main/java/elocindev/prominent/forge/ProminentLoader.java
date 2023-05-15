@@ -28,7 +28,7 @@ public class ProminentLoader {
     public ProminentLoader() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        PROMINENT_TAB = new CreativeModeTab("tab") {
+        PROMINENT_TAB = new CreativeModeTab("prominent") {
 			@Override
 			public ItemStack makeIcon() {
 				return new ItemStack(ItemRegistry.ICON.get());
