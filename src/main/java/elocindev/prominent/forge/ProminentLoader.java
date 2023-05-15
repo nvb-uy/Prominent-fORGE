@@ -26,13 +26,7 @@ public class ProminentLoader {
     public ProminentLoader() {
         MinecraftForge.EVENT_BUS.register(this);
 
-        Config = ConfigBuilder.loadConfig();
-        LOGGER.info("Loaded Prominent Config");
-
-        ItemRegistry.register();
-        SoundRegistry.register();
-
-        PROMINENT_TAB = new CreativeModeTab("tab") {
+        PROMINENT_TAB = new CreativeModeTab("prominent") {
 			@Override
 			public ItemStack makeIcon() {
 				return new ItemStack(ItemRegistry.ICON.get());
@@ -43,5 +37,11 @@ public class ProminentLoader {
 				return false;
 			}
 		};
+
+        Config = ConfigBuilder.loadConfig();
+        LOGGER.info("Loaded Prominent Config");
+
+        ItemRegistry.register();
+        SoundRegistry.register();
     }
 }
