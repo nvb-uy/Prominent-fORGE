@@ -13,7 +13,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(ProminentLoader.MODID)
 public class ProminentLoader {
@@ -24,9 +26,9 @@ public class ProminentLoader {
     public static CreativeModeTab PROMINENT_TAB;
 
     public ProminentLoader() {
-        MinecraftForge.EVENT_BUS.register(this);
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        PROMINENT_TAB = new CreativeModeTab("prominent") {
+        PROMINENT_TAB = new CreativeModeTab("tab") {
 			@Override
 			public ItemStack makeIcon() {
 				return new ItemStack(ItemRegistry.ICON.get());
@@ -40,8 +42,10 @@ public class ProminentLoader {
 
         Config = ConfigBuilder.loadConfig();
         LOGGER.info("Loaded Prominent Config");
+        
+        SoundRegistry.REGISTRY.register(bus);
+        ItemRegistry.REGISTRY.register(bus);
 
-        ItemRegistry.register();
-        SoundRegistry.register();
+        MinecraftForge.EVENT_BUS.register(this);
     }
 }
